@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Settings | Graindashboard UI Kit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="shortcut icon" href="public/img/favicon.ico">
+    <link rel="stylesheet" href="public/graindashboard/css/graindashboard.css">
+    <style>
+    .how-to-integrate-wasm {
+        background-color: #fff; /* Adjust to match your page background if necessary */
+        padding: 20px;
+        margin-top: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds subtle shadow for depth */
+    }
+    
+    .how-to-integrate-wasm h2, .how-to-integrate-wasm h3 {
+        color: #333; /* Dark color for headings */
+    }
+    
+    .how-to-integrate-wasm p, .how-to-integrate-wasm pre {
+        color: #666; /* Slightly lighter color for text */
+        line-height: 1.6;
+    }
+    
+    .how-to-integrate-wasm pre {
+        background-color: #f9f9f9; /* Light background for code blocks */
+        border: 1px solid #eee; /* Subtle border for definition */
+        border-radius: 5px;
+        padding: 10px;
+        overflow-x: auto; /* Ensures code is scrollable horizontally if it overflows */
+        font-family: monospace;
+    }
+    
+    .how-to-integrate-wasm code {
+        color: #d63384; /* Pinkish tone for code, adjust as needed */
+    }
+    #submissionResultCard {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 20px; /* Adjust this value based on your header's height or desired distance from the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+    </style>
+</head>
+<body class="has-sidebar has-fixed-sidebar-and-header">
+    <script src="https://jeengine.s3.ap-southeast-1.amazonaws.com/wasm/wasmrunner.min.js"></script>
+<header class="header bg-body">
+    <nav class="navbar flex-nowrap p-0">
+        <div class="navbar-brand-wrapper d-flex align-items-center col-auto">
+            <a class="navbar-brand navbar-brand-mobile" href="/">
+                <img class="img-fluid w-100" src="public/img/logo-mini.png" alt="Graindashboard">
+            </a>
+            <a class="navbar-brand navbar-brand-desktop" href="/">
+                <img class="side-nav-show-on-closed" src="public/img/chubblogo-mini.png" alt="Graindashboard" style="width: auto; height: 33px;">
+                <img class="side-nav-hide-on-closed" src="public/img/chubblogo.png" alt="Graindashboard" style="width: auto; height: 20px;">
+            </a>
+        </div>
+
+        <div class="header-content col px-md-3">
+            <div class="d-flex align-items-center">
+                <a class="js-side-nav header-invoker d-flex mr-md-2" href="#" data-close-invoker="#sidebarClose" data-target="#sidebar" data-target-wrapper="body">
+                    <i class="gd-align-left"></i>
+                </a>
+
+                <div class="dropdown ml-auto">
+                    <a id="notificationsInvoker" class="header-invoker" href="#" aria-controls="notifications" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#notifications" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
+                        <span class="indicator indicator-bordered indicator-top-right indicator-primary rounded-circle"></span>
+                        <i class="gd-bell"></i>
+                    </a>
+                    <div id="notifications" class="dropdown-menu dropdown-menu-center py-0 mt-4 w-18_75rem w-md-22_5rem unfold-css-animation unfold-hidden" aria-labelledby="notificationsInvoker">
+                        <!-- Notification content -->
+                    </div>
+                </div>
+
+                <div class="dropdown mx-3">
+                    <a id="profileMenuInvoker" class="header-complex-invoker d-flex align-items-center" href="#" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#profileMenu" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
+                        <span class="mr-md-2 avatar-placeholder">J</span>
+                        <span class="d-none d-md-block">John Doe</span>
+                        <i class="gd-angle-down d-none d-md-block ml-2"></i>
+                    </a>
+                    <ul id="profileMenu" class="unfold unfold-user unfold-light unfold-top unfold-centered position-absolute pt-2 pb-1 mt-4 unfold-css-animation unfold-hidden fadeOut" aria-labelledby="profileMenuInvoker">
+                        <li class="unfold-item">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                                <span class="unfold-item-icon mr-3"><i class="gd-user"></i></span>
+                                My Profile
+                            </a>
+                        </li>
+                        <li class="unfold-item unfold-item-has-divider">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                                <span class="unfold-item-icon mr-3"><i class="gd-power-off"></i></span>
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="main">
+    <aside id="sidebar" class="js-custom-scroll side-nav">
+        <ul id="sideNav" class="side-nav-menu side-nav-menu-top-level mb-0">
+              <!-- Title -->
+            <li class="sidebar-heading h6">Dashboard</li>
+            <!-- End Title -->
+
+            <!-- Dashboard -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="/">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-dashboard"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard -->
+
+            <!-- Documentation -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="documentation/" target="_blank">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Documentation</span>
+                </a>
+            </li>
+            <!-- End Documentation -->
+
+            <!-- Title -->
+            <li class="sidebar-heading h6">Examples</li>
+            <!-- End Title -->
+
+            <!-- Users -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                   data-target="#subUsers">
+                  <span class="side-nav-menu-icon d-flex mr-3">
+                    <i class="gd-user"></i>
+                  </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Users</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+              </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Users: subUsers -->
+                <ul id="subUsers" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="users.html">All Users</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="user-edit.html">Add new</a>
+                    </li>
+                </ul>
+                <!-- End Users: subUsers -->
+            </li>
+            <!-- End Users -->
+
+            <!-- Authentication -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                   data-target="#subPages">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-lock"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">API Keys</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+              </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Pages: subPages -->
+                <ul id="subPages" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="login.html">Login</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="register.html">Register</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="password-reset.html">Forgot Password</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="password-reset-2.html">Forgot Password 2</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="email-verification.html">Email Verification</a>
+                    </li>
+                </ul>
+                <!-- End Pages: subPages -->
+            </li>
+            <!-- End Authentication -->
+
+            <!-- Settings -->
+            <li class="side-nav-menu-item active">
+                <a class="side-nav-menu-link media align-items-center" href="settings.html">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-settings"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Settings</span>
+                </a>
+            </li>
+            <!-- End Settings -->
+
+            <!-- Static -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="static-non-auth.html">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Static page</span>
+                </a>
+            </li>
+            <!-- End Static -->
+
+        </ul>
+    </aside>
+
+    <div class="content">
+        <div class="py-4 px-3 px-md-4">
+            <div class="row">
+                <!-- Form Column -->
+                <div class="col-md-6">
+
+                    
+                    <div class="card mb-3 mb-md-4">
+                        <div class="card-body">
+                            <h3 class="mb-4">Cyber Protect - V2.3 </h3>
+                            <form id="apiFormulatorForm">
+                                <!-- AccidentSickness -->
+                                <div class="form-group">
+                                    <label for="AccidentSickness">Accident and Sickness</label>
+                                    <select class="form-control" id="AccidentSickness" name="AccidentSickness">
+                                        <option value="Accident and Sickness">Accident and Sickness</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                    
+                                <!-- Age -->
+                                <div class="form-group">
+                                    <label for="Age">Age</label>
+                                    <select class="form-control" id="Age" name="Age">
+                                        <option value="40-49">40-49</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                    
+                                <!-- AnnualModeDiscount -->
+                                <div class="form-group">
+                                    <label for="AnnualModeDiscount">Annual Mode Discount</label>
+                                    <select class="form-control" id="AnnualModeDiscount" name="AnnualModeDiscount">
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
+                                </div>
+                    
+                                <!-- BenefitAmount -->
+                                <div class="form-group">
+                                    <label for="BenefitAmount">Benefit Amount</label>
+                                    <input type="number" class="form-control" id="BenefitAmount" name="BenefitAmount" value="2500">
+                                </div>
+                    
+                                <!-- EmployerDiscount -->
+                                <div class="form-group">
+                                    <label for="EmployerDiscount">Employer Discount</label>
+                                    <select class="form-control" id="EmployerDiscount" name="EmployerDiscount">
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
+                                </div>
+                    
+                                <!-- MultiCoverageDiscount -->
+                                <div class="form-group">
+                                    <label for="MultiCoverageDiscount">Multi Coverage Discount</label>
+                                    <select class="form-control" id="MultiCoverageDiscount" name="MultiCoverageDiscount">
+                                        <option value="N">No</option>
+                                        <option value="Y">Yes</option>
+                                    </select>
+                                </div>
+                    
+                                <!-- Occupation -->
+                                <div class="form-group">
+                                    <label for="Occupation">Occupation</label>
+                                    <select class="form-control" id="Occupation" name="Occupation">
+                                        <option value="Accountant">Accountant</option>
+                                        <!-- Populate dynamically or add more options as needed -->
+                                    </select>
+                                </div>
+                    
+                                <!-- Plan -->
+                                <div class="form-group">
+                                    <label for="Plan">Plan</label>
+                                    <select class="form-control" id="Plan" name="Plan">
+                                        <option value="Low">Low</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                    
+                                <!-- Smoker -->
+                                <div class="form-group">
+                                    <label for="Smoker">Smoker</label>
+                                    <select class="form-control" id="Smoker" name="Smoker">
+                                        <option value="Non-Smoker">Non-Smoker</option>
+                                        <option value="Smoker">Smoker</option>
+                                    </select>
+                                </div>
+                    
+                                <!-- State -->
+                                <div class="form-group">
+                                    <label for="State">State</label>
+                                    <select class="form-control" id="State" name="State">
+                                        <option value="Ohio">Ohio</option>
+                                        <!-- Add more states as needed -->
+                                    </select>
+                                </div>
+                    
+                                <!-- WellnessBonus -->
+                                <div class="form-group">
+                                    <label for="WellnessBonus">Wellness Bonus</label>
+                                    <select class="form-control" id="WellnessBonus" name="WellnessBonus">
+                                        <option value="None">None</option>
+                                        <!-- Add more options as needed -->
+                                    </select>
+                                </div>
+                            <!-- Hidden fields for request_meta -->
+                            <input type="hidden" name="version_id" value="b918e166-6129-4ee0-a87f-47199f8b68d2">
+                            <input type="hidden" name="call_purpose" value="Spark - API Tester">
+                            <input type="hidden" name="source_system" value="SPARK">
+                            <input type="hidden" name="correlation_id">
+                            <input type="hidden" name="requested_output">
+                            <input type="hidden" name="service_category" value="">
+                                
+                                <button type="button" id="initButton" class="btn btn-secondary float-left">Sync</button>
+                                <!-- <button type="button" id="calcButton" class="btn btn-primary float-right">Submit</button> -->
+                                <button type="button" id="calcButton" class="btn btn-primary float-right" disabled>Submit</button>
+                               
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Display Column -->
+             <!-- Result Display Column -->
+                    <div class="col-md-6">
+                        <div class="card" id="submissionResultCard">
+                            <div class="card-header">
+                                <h5>Submission Result</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Placeholder for the results table -->
+                                <div id="resultDisplay" class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Field</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="resultTableBody">
+                                            <!-- Dynamically generated rows will go here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--johan-->
+<section class="how-to-integrate-wasm">
+    <div class="container">
+        <h2>How to Integrate Jewelry V0.12 Web Assembly into Your Project</h2>
+        <p>Follow these steps to successfully integrate our Product WASM into your application.</p>
+
+        <!-- Step 1: Include WASM Runner Library -->
+        <h3>Step 1: Include WASM Runner Library</h3>
+        <p>Add the <code>wasmrunner.min.js</code> library to your project. Include it in your HTML file like so:</p>
+        <pre><code>&lt;script src="path/to/wasmrunner.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <!-- Step 2: Load the WASM Module -->
+        <h3>Step 2: Load the WASM Module</h3>
+        <p>Initialize the WASM Runner with the module ID and URL:</p>
+        <pre><code>var wasmRunner = new CoherentGlobal.WasmRunner({
+    id: "your_module_id",
+    url: "path/to/your_module.wasm",
+});</code></pre>
+
+        <!-- Step 3: Prepare Your Payload -->
+        <h3>Step 3: Prepare Your Payload</h3>
+        <p>Construct the payload object with your request data and metadata.</p>
+        <pre><code>const payload = {
+    request_data: {
+        // Your request data here
+    },
+    request_meta: {
+        // Your request metadata here
+    }
+};</code></pre>
+
+        <!-- Step 4: Execute the WASM Function -->
+        <h3>Step 4: Execute the WASM Function</h3>
+        <p>Use the <code>.execute()</code> method to submit your payload to the WASM module.</p>
+        <pre><code>async function submitData() {
+    try {
+        const response = await wasmRunner.execute(payload);
+        console.log("WASM Execution Response:", response);
+    } catch (error) {
+        console.error("Error executing WASM module:", error);
+    }
+}</code></pre>
+
+        <!-- Step 5: Handle the Response -->
+        <h3>Step 5: Handle the Response</h3>
+        <p>Process the response from the WASM module as needed for your application.</p>
+
+        <!-- Step 6: Error Handling -->
+        <h3>Step 6: Error Handling</h3>
+        <p>Implement error handling for initialization and execution phases of the WASM module.</p>
+    </div>
+</section>
+
+<!--enjhan-->
+
+        </div>
+        <script>
+            var param = {
+                id: "b918e166-6129-4ee0-a87f-47199f8b68d2",
+                url: "paycheck.zip",
+            };
+    
+            var wasmRunner = new CoherentGlobal.WasmRunner(param);
+    
+            // document.getElementById('initButton').addEventListener('click', async () => {
+            //     await wasmRunner.initialize();
+            //     console.log("WASM Runner initialized");
+            // });
+
+ document.getElementById('initButton').addEventListener('click', async () => {
+    try {
+        await wasmRunner.initialize();
+        console.log("Cyber Protect initialized");
+
+        // Change the button text to "Initialized" after successful initialization
+        document.getElementById('initButton').textContent = "Synced";
+
+        // Disable the initButton to prevent re-initialization
+        document.getElementById('initButton').disabled = true;
+
+        // Enable the submit button
+        document.getElementById('calcButton').disabled = false;
+
+    } catch (err) {
+        console.error("Initialization failed: ", err);
+    }
+});
+
+
+// Function to recursively display each value in a visually structured manner
+// function displayValue(value, parentElement) {
+//     // Check if 'value' is the expected response object and contains 'response_data'
+//     if (typeof value === 'object' && value !== null && value.response_data) {
+//         // Specifically target the 'Outputs' within 'response_data', if it exists
+//         const outputs = value.response_data.Outputs;
+//         if (outputs) {
+//             // Now iterate over 'Outputs' to display them
+//             Object.entries(outputs).forEach(([key, val]) => {
+//                 const row = parentElement.insertRow();
+//                 const keyCell = row.insertCell(0);
+//                 keyCell.textContent = key;
+//                 keyCell.style.fontWeight = "bold";
+//                 const valueCell = row.insertCell(1);
+//                 valueCell.textContent = typeof val === 'object' ? JSON.stringify(val, null, 2) : val;
+//             });
+//         } else {
+//             // If 'Outputs' is not present, display a message or handle accordingly
+//             const row = parentElement.insertRow();
+//             const cell = row.insertCell(0);
+//             cell.textContent = "No Outputs Available";
+//             cell.colSpan = 2;
+//         }
+//     } else {
+//         // Handle unexpected response format
+//         const row = parentElement.insertRow();
+//         const cell = row.insertCell(0);
+//         cell.textContent = "Invalid Response Format";
+//         cell.colSpan = 2;
+//     }
+// }
+
+document.getElementById('calcButton').addEventListener('click', async () => {
+    const form = document.getElementById('apiFormulatorForm');
+    const formData = new FormData(form);
+    const payload = {
+        request_data: {
+            inputs: {
+                AccidentSickness: formData.get('AccidentSickness'),
+                Age: formData.get('Age'),
+                AnnualModeDiscount: formData.get('AnnualModeDiscount'),
+                BenefitAmount: parseInt(formData.get('BenefitAmount'), 10),
+                EmployerDiscount: formData.get('EmployerDiscount'),
+                MultiCoverageDiscount: formData.get('MultiCoverageDiscount'),
+                Occupation: formData.get('Occupation'),
+                Plan: formData.get('Plan'),
+                Smoker: formData.get('Smoker'),
+                State: formData.get('State'),
+                WellnessBonus: formData.get('WellnessBonus'),
+            }
+        },
+        request_meta: {
+            version_id: formData.get('version_id'),
+            call_purpose: formData.get('call_purpose'),
+            source_system: formData.get('source_system'),
+            correlation_id: formData.get('correlation_id'),
+            requested_output: formData.get('requested_output'),
+            service_category: formData.get('service_category'),
+        }
+    };
+
+    try {
+        const response = await wasmRunner.execute(payload); // Execute and get the response
+        displayResult(response);
+    } catch (err) {
+        console.error("Error during submission: ", err);
+        document.getElementById('resultTableBody').innerHTML = `<tr><td colspan="2">Error: ${err.message}</td></tr>`;
+    }
+});
+
+
+
+// function displayResult(data) {
+//   console.log("Received data:", data);
+//   const resultTableBody = document.getElementById('resultTableBody');
+//   resultTableBody.innerHTML = '';
+
+//   console.log("Checking data path:", data.response_data?.outputs?.Premium);
+
+//   if (data && data.response_data && data.response_data.outputs) {
+//     if (Array.isArray(data.response_data.outputs.Premium)) {
+//       data.response_data.outputs.Premium.forEach((premiumItem, index) => {
+//         console.log(`Processing Premium ${index}:`, premiumItem);
+//         const row = resultTableBody.insertRow();
+//         const keyCell = row.insertCell(0);
+//         const valueCell = row.insertCell(1);
+//         keyCell.textContent = `Premium ${index + 1}`;
+//         valueCell.textContent = JSON.stringify(premiumItem, null, 2);
+//       });
+//     } else {
+//       Object.entries(data.response_data.outputs).forEach(([key, value]) => {
+//         if (key !== "Premium") {
+//           const row = resultTableBody.insertRow();
+//           const keyCell = row.insertCell(0);
+//           const valueCell = row.insertCell(1);
+//           keyCell.textContent = key;
+//           valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+//         }
+//       });
+//     }
+//   } else {
+//     resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
+//   }
+// }
+function displayResult(data) {
+  console.log("Received data:", data);
+  const resultTableBody = document.getElementById('resultTableBody');
+  resultTableBody.innerHTML = '';
+
+  if (data && data.response_data && data.response_data.outputs) {
+    Object.entries(data.response_data.outputs).forEach(([key, value]) => {
+      const row = resultTableBody.insertRow();
+      const keyCell = row.insertCell(0);
+      keyCell.textContent = key;
+      const valueCell = row.insertCell(1);
+      
+      if (key === 'Premium' && Array.isArray(value)) {
+        const recommendationsDiv = document.createElement('div');
+        value.forEach(rec => {
+          const miniTable = document.createElement('table');
+          miniTable.classList.add('mini-table');
+          Object.entries(rec).forEach(([recKey, recValue]) => {
+            const miniRow = miniTable.insertRow();
+            const recKeyCell = miniRow.insertCell(0);
+            recKeyCell.textContent = recKey;
+            const recValueCell = miniRow.insertCell(1);
+            recValueCell.textContent = recValue;
+          });
+          recommendationsDiv.appendChild(miniTable);
+          recommendationsDiv.appendChild(document.createElement('hr')); // Separator
+        });
+        valueCell.appendChild(recommendationsDiv);
+      } else {
+        valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+      }
+    });
+  } else {
+    resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
+  }
+}
+
+
+
+        </script>
+        <footer class="small p-3 px-md-4 mt-auto">
+            <div class="row justify-content-between">
+                <div class="col-lg text-center text-lg-left mb-3 mb-lg-0">
+                    <!-- Footer Links -->
+                </div>
+                <div class="col-lg text-center mb-3 mb-lg-0">
+                    <!-- Social Icons -->
+                </div>
+                <div class="col-lg text-center text-lg-right">
+                    &copy; 2019 Graindashboard. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>
+
+
+
+<!-- <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const occupationSelect = document.getElementById('occupation');
+    const occupationDetailSelect = document.getElementById('occupationDetail');
+
+    function updateOccupationDetails(occupation) {
+        const options = {
+            'Arts/Entertainment/Media': [
+                { text: 'Actor / Actress', value: 'Actor / Actress' },
+                { text: 'Art Dealer', value: 'Art Dealer' },
+                { text: 'Broadcaster / Reporter', value: 'Broadcaster' },
+                { text: 'Director – TV/Film/Stage', value: 'Director – TV/Film/Stage' },
+                { text: 'Editor', value: 'Editor' },
+                { text: 'Fashion Designer', value: 'Fashion Designer' },
+                { text: 'Journalist', value: 'Journalist' },
+                { text: 'Model', value: 'Model' },
+                { text: 'Musician', value: 'Musician' },
+                { text: 'News Media', value: 'News Media' },
+                { text: 'Publisher', value: 'Publisher' },
+                { text: 'Radio (Director,Producer,Personality)', value: 'Radio - Director/Producer' },
+                { text: 'TV / Film / Stage', value: 'Celebrity – TV/Film/Stage' },
+                { text: 'Writer', value: 'Writer' }
+            ],
+            'Clergy': [
+                { text: 'Evangelist', value: 'Evangelist' }
+            ],
+            'Government': [
+                { text: 'Diplomat', value: 'Diplomat' },
+                { text: 'Politician', value: 'Politician' },
+                { text: 'Royalty', value: 'Royalty' }
+            ],
+            'Military': [
+                { text: 'Joint Chiefs of Staff', value: 'Joint Chiefs of Staff' },
+            
+               
+            ],
+            'Personal Care/Services': [
+                { text: 'Celebrity Consultant', value: 'Celebrity Consultant' },
+        ],
+        "Healthcare": [
+        { text: "Doctor", value: "Doctor" },
+        { text: "Nurse", value: "Nurse" },
+        { text: "Pharmacist", value: "Pharmacist" },
+        { text: "Dentist", value: "Dentist" },
+        { text: "Healthcare Administrator", value: "Healthcare Administrator" }
+    ],
+    "Engineering": [
+        { text: "Civil Engineer", value: "Civil Engineer" },
+        { text: "Mechanical Engineer", value: "Mechanical Engineer" },
+        { text: "Electrical Engineer", value: "Electrical Engineer" },
+        { text: "Software Engineer", value: "Software Engineer" },
+        { text: "Chemical Engineer", value: "Chemical Engineer" }
+    ],
+    "Education": [
+        { text: "Elementary School Teacher", value: "Elementary School Teacher" },
+        { text: "High School Teacher", value: "High School Teacher" },
+        { text: "College Professor", value: "College Professor" },
+        { text: "Special Education Teacher", value: "Special Education Teacher" },
+        { text: "School Administrator", value: "School Administrator" }
+    ],
+    "Business/Finance": [
+        { text: "Accountant", value: "Accountant" },
+        { text: "Financial Analyst", value: "Financial Analyst" },
+        { text: "Marketing Manager", value: "Marketing Manager" },
+        { text: "Human Resources Manager", value: "Human Resources Manager" },
+        { text: "Project Manager", value: "Project Manager" }
+    ],
+        };
+
+        // Clear existing options
+        occupationDetailSelect.innerHTML = '';
+        
+        // Populate new options
+        const details = options[occupation] || [];
+        details.forEach(detail => {
+            const option = new Option(detail.text, detail.value);
+            occupationDetailSelect.add(option);
+        });
+    }
+
+    // Listen for changes to the occupation select
+    occupationSelect.addEventListener('change', function() {
+        updateOccupationDetails(this.value);
+    });
+
+    // Initial population based on the default selected occupation
+    updateOccupationDetails(occupationSelect.value);
+});
+</script> -->
+
+    
+</script>
+
+<script src="public/graindashboard/js/graindashboard.js"></script>
+<script src="public/graindashboard/js/graindashboard.vendor.js"></script>
+</body>
+</html>

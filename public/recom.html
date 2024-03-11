@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Settings | Graindashboard UI Kit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="shortcut icon" href="public/img/favicon.ico">
+    <link rel="stylesheet" href="public/graindashboard/css/graindashboard.css">
+    <style>
+    .how-to-integrate-wasm {
+        background-color: #fff; /* Adjust to match your page background if necessary */
+        padding: 20px;
+        margin-top: 30px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds subtle shadow for depth */
+    }
+    
+    .how-to-integrate-wasm h2, .how-to-integrate-wasm h3 {
+        color: #333; /* Dark color for headings */
+    }
+    
+    .how-to-integrate-wasm p, .how-to-integrate-wasm pre {
+        color: #666; /* Slightly lighter color for text */
+        line-height: 1.6;
+    }
+    
+    .how-to-integrate-wasm pre {
+        background-color: #f9f9f9; /* Light background for code blocks */
+        border: 1px solid #eee; /* Subtle border for definition */
+        border-radius: 5px;
+        padding: 10px;
+        overflow-x: auto; /* Ensures code is scrollable horizontally if it overflows */
+        font-family: monospace;
+    }
+    
+    .how-to-integrate-wasm code {
+        color: #d63384; /* Pinkish tone for code, adjust as needed */
+    }
+
+    #submissionResultCard {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 20px; /* Adjust this value based on your header's height or desired distance from the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.mini-table {
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #f9f9f9; /* Light grey background */
+}
+
+.mini-table td:first-child {
+  font-weight: bold; /* Make key bold */
+  padding-right: 10px; /* Spacing between key and value */
+}
+
+.mini-table td {
+  border: none; /* Remove borders for a cleaner look */
+  padding: 2px; /* Smaller padding for compactness */
+}
+    </style>
+</head>
+<body class="has-sidebar has-fixed-sidebar-and-header">
+    <script src="https://jeengine.s3.ap-southeast-1.amazonaws.com/wasm/wasmrunner.min.js"></script>
+<header class="header bg-body">
+    <nav class="navbar flex-nowrap p-0">
+        <div class="navbar-brand-wrapper d-flex align-items-center col-auto">
+            <a class="navbar-brand navbar-brand-mobile" href="/">
+                <img class="img-fluid w-100" src="public/img/logo-mini.png" alt="Graindashboard">
+            </a>
+            <a class="navbar-brand navbar-brand-desktop" href="/">
+                <img class="side-nav-show-on-closed" src="public/img/chubblogo-mini.png" alt="Graindashboard" style="width: auto; height: 33px;">
+                <img class="side-nav-hide-on-closed" src="public/img/chubblogo.png" alt="Graindashboard" style="width: auto; height: 20px;">
+            </a>
+        </div>
+
+        <div class="header-content col px-md-3">
+            <div class="d-flex align-items-center">
+                <a class="js-side-nav header-invoker d-flex mr-md-2" href="#" data-close-invoker="#sidebarClose" data-target="#sidebar" data-target-wrapper="body">
+                    <i class="gd-align-left"></i>
+                </a>
+
+                <div class="dropdown ml-auto">
+                    <a id="notificationsInvoker" class="header-invoker" href="#" aria-controls="notifications" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#notifications" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
+                        <span class="indicator indicator-bordered indicator-top-right indicator-primary rounded-circle"></span>
+                        <i class="gd-bell"></i>
+                    </a>
+                    <div id="notifications" class="dropdown-menu dropdown-menu-center py-0 mt-4 w-18_75rem w-md-22_5rem unfold-css-animation unfold-hidden" aria-labelledby="notificationsInvoker">
+                        <!-- Notification content -->
+                    </div>
+                </div>
+
+                <div class="dropdown mx-3">
+                    <a id="profileMenuInvoker" class="header-complex-invoker d-flex align-items-center" href="#" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#profileMenu" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
+                        <span class="mr-md-2 avatar-placeholder">J</span>
+                        <span class="d-none d-md-block">John Doe</span>
+                        <i class="gd-angle-down d-none d-md-block ml-2"></i>
+                    </a>
+                    <ul id="profileMenu" class="unfold unfold-user unfold-light unfold-top unfold-centered position-absolute pt-2 pb-1 mt-4 unfold-css-animation unfold-hidden fadeOut" aria-labelledby="profileMenuInvoker">
+                        <li class="unfold-item">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                                <span class="unfold-item-icon mr-3"><i class="gd-user"></i></span>
+                                My Profile
+                            </a>
+                        </li>
+                        <li class="unfold-item unfold-item-has-divider">
+                            <a class="unfold-link d-flex align-items-center text-nowrap" href="#">
+                                <span class="unfold-item-icon mr-3"><i class="gd-power-off"></i></span>
+                                Sign Out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="main">
+    <aside id="sidebar" class="js-custom-scroll side-nav">
+        <ul id="sideNav" class="side-nav-menu side-nav-menu-top-level mb-0">
+              <!-- Title -->
+            <li class="sidebar-heading h6">Dashboard</li>
+            <!-- End Title -->
+
+            <!-- Dashboard -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="/">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-dashboard"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard -->
+
+            <!-- Documentation -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="documentation/" target="_blank">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Documentation</span>
+                </a>
+            </li>
+            <!-- End Documentation -->
+
+            <!-- Title -->
+            <li class="sidebar-heading h6">Examples</li>
+            <!-- End Title -->
+
+            <!-- Users -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                   data-target="#subUsers">
+                  <span class="side-nav-menu-icon d-flex mr-3">
+                    <i class="gd-user"></i>
+                  </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Users</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+              </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Users: subUsers -->
+                <ul id="subUsers" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="users.html">All Users</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="user-edit.html">Add new</a>
+                    </li>
+                </ul>
+                <!-- End Users: subUsers -->
+            </li>
+            <!-- End Users -->
+
+            <!-- Authentication -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                   data-target="#subPages">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-lock"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">API Keys</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+              </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Pages: subPages -->
+                <ul id="subPages" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="login.html">Login</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="register.html">Register</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="password-reset.html">Forgot Password</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="password-reset-2.html">Forgot Password 2</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="email-verification.html">Email Verification</a>
+                    </li>
+                </ul>
+                <!-- End Pages: subPages -->
+            </li>
+            <!-- End Authentication -->
+
+            <!-- Settings -->
+            <li class="side-nav-menu-item active">
+                <a class="side-nav-menu-link media align-items-center" href="settings.html">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-settings"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Settings</span>
+                </a>
+            </li>
+            <!-- End Settings -->
+
+            <!-- Static -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href="static-non-auth.html">
+              <span class="side-nav-menu-icon d-flex mr-3">
+                <i class="gd-file"></i>
+              </span>
+                    <span class="side-nav-fadeout-on-closed media-body">Static page</span>
+                </a>
+            </li>
+            <!-- End Static -->
+
+        </ul>
+    </aside>
+
+    <div class="content">
+        <div class="py-4 px-3 px-md-4">
+            <div class="row">
+                <!-- Form Column -->
+                <div class="col-md-6">
+
+                    <div class="card mb-3 mb-md-4">
+                        <div class="card-body">
+                            <h3 class="mb-4">A&H Product Recommender v1.7 </h3>
+                            <form id="apiFormulatorForm">
+                                <!-- Channel -->
+                                <div class="form-group">
+                                    <label for="Channel">Channel</label>
+                                    <select class="form-control" id="Channel" name="Channel">
+                                        <option value="Agency">Agency</option>
+                                        <option value="Banca">Banca</option>
+                                        <!-- Add more channels as necessary -->
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Age -->
+                                <div class="form-group">
+                                    <label for="Customer_1_Age">Customer Age</label>
+                                    <input type="number" class="form-control" id="Customer_1_Age" name="Customer_1_Age">
+                                </div>
+                                
+                                <!-- Customer Gender -->
+                                <div class="form-group">
+                                    <label for="Customer_2_Gender">Customer Gender</label>
+                                    <select class="form-control" id="Customer_2_Gender" name="Customer_2_Gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Nationality -->
+                                <div class="form-group">
+                                    <label for="Customer_3_Nationality">Customer Nationality</label>
+                                    <select class="form-control" id="Customer_3_Nationality" name="Customer_3_Nationality">
+                                        <option value="Local">Local</option>
+                                        <option value="Non-Local">Non-Local</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Occupation -->
+                                <div class="form-group">
+                                    <label for="Customer_4_Occupation">Customer Occupation</label>
+                                    <select class="form-control" id="Customer_4_Occupation" name="Customer_4_Occupation">
+                                        <option value="Finance">Finance</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Others">Others</option>
+                                        <!-- Add more occupations as necessary -->
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Married -->
+                                <div class="form-group">
+                                    <label for="Customer_5_Married">Customer Married</label>
+                                    <select class="form-control" id="Customer_5_Married" name="Customer_5_Married">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Dependents -->
+                                <div class="form-group">
+                                    <label for="Customer_6_Dependents">Customer Dependents</label>
+                                    <select class="form-control" id="Customer_6_Dependents" name="Customer_6_Dependents">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Living Area -->
+                                <div class="form-group">
+                                    <label for="Customer_7_Living_Area">Customer Living Area</label>
+                                    <select class="form-control" id="Customer_7_Living_Area" name="Customer_7_Living_Area">
+                                        <option value="Hong Kong">Hong Kong</option>
+                                        <option value="Hong Kong">Other</option>
+                                        <!-- Add more areas as necessary -->
+                                    </select>
+                                </div>
+                                
+                                <!-- Customer Income HKD -->
+                                <div class="form-group">
+                                    <label for="Customer_8_Income_HKD">Customer Income HKD</label>
+                                    <select class="form-control" id="Customer_8_Income_HKD" name="Customer_8_Income_HKD">
+                                        <option value="< 120000">< 120000</option>
+                                        <option value="120001 - 200000">120001 - 200000</option>
+                                        <option value="200001 - 360000">200001 - 360000</option>
+                                        <option value="360001 - 600000">360001 - 600000</option>
+                                        <option value="600001 - 960000">600001 - 960000</option>
+                                        <!-- Add more income ranges as necessary -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Needs_1_Term">Need Term?</label>
+                                    <select class="form-control" id="Needs_1_Term" name="Needs_1_Term">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                       
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_2_Medical">Need medical? </label>
+                                    <select class="form-control" id="Needs_2_Medical" name="Needs_2_Medical">
+                                        <option value="Yes">Yes</option>
+                                         <option value="No">No</option>
+                                       
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_3_Critical_Illness">Need CI? </label>
+                                    <select class="form-control" id="Needs_3_Critical_Illness" name="Needs_3_Critical_Illness">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_4_Participating_whole_life">Need Whole Life? </label>
+                                    <select class="form-control" id="Needs_4_Participating_whole_life" name="Needs_4_Participating_whole_life">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_5_Universal_life">Need Universal Life? </label>
+                                    <select class="form-control" id="Needs_5_Universal_life" name="Needs_5_Universal_life">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_6_Investment_linked">Need Investment Life? </label>
+                                    <select class="form-control" id="Needs_6_Investment_linked" name="Needs_6_Investment_linked">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Needs_7_Annuity">Need Anuity? </label>
+                                    <select class="form-control" id="Needs_7_Annuity" name="Needs_7_Annuity">
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        
+                                    </select>
+                                </div>
+                                <!-- Needs -->
+                                <!-- Repeat the pattern for all needs as per your structure -->
+                                
+                                
+                          <!-- Hidden fields for request_meta -->
+                          <input type="hidden" name="version_id" value="b0e1c878-3431-4af5-9b71-6cf516da24af">
+                          <input type="hidden" name="call_purpose" value="Spark - API Tester">
+                          <input type="hidden" name="source_system" value="SPARK">
+                          <input type="hidden" name="correlation_id">
+                          <input type="hidden" name="requested_output">
+                          <input type="hidden" name="service_category" value="">
+                                
+                                <button type="button" id="initButton" class="btn btn-secondary float-left">Sync</button>
+                                <!-- <button type="button" id="calcButton" class="btn btn-primary float-right">Submit</button> -->
+                                <button type="button" id="calcButton" class="btn btn-primary float-right" disabled>Submit</button>
+                               
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Display Column -->
+             <!-- Result Display Column -->
+                    <div class="col-md-6">
+                        <div class="card" id="submissionResultCard">
+                            <div class="card-header">
+                                <h5>Submission Result</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Placeholder for the results table -->
+                                <div id="resultDisplay" class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Field</th>
+                                                <th>Value</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="resultTableBody">
+                                            <!-- Dynamically generated rows will go here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+<!--johan-->
+<section class="how-to-integrate-wasm">
+    <div class="container">
+        <h2>How to Integrate Jewelry V0.12 Web Assembly into Your Project</h2>
+        <p>Follow these steps to successfully integrate our Product WASM into your application.</p>
+
+        <!-- Step 1: Include WASM Runner Library -->
+        <h3>Step 1: Include WASM Runner Library</h3>
+        <p>Add the <code>wasmrunner.min.js</code> library to your project. Include it in your HTML file like so:</p>
+        <pre><code>&lt;script src="path/to/wasmrunner.min.js"&gt;&lt;/script&gt;</code></pre>
+
+        <!-- Step 2: Load the WASM Module -->
+        <h3>Step 2: Load the WASM Module</h3>
+        <p>Initialize the WASM Runner with the module ID and URL:</p>
+        <pre><code>var wasmRunner = new CoherentGlobal.WasmRunner({
+    id: "your_module_id",
+    url: "path/to/your_module.wasm",
+});</code></pre>
+
+        <!-- Step 3: Prepare Your Payload -->
+        <h3>Step 3: Prepare Your Payload</h3>
+        <p>Construct the payload object with your request data and metadata.</p>
+        <pre><code>const payload = {
+    request_data: {
+        // Your request data here
+    },
+    request_meta: {
+        // Your request metadata here
+    }
+};</code></pre>
+
+        <!-- Step 4: Execute the WASM Function -->
+        <h3>Step 4: Execute the WASM Function</h3>
+        <p>Use the <code>.execute()</code> method to submit your payload to the WASM module.</p>
+        <pre><code>async function submitData() {
+    try {
+        const response = await wasmRunner.execute(payload);
+        console.log("WASM Execution Response:", response);
+    } catch (error) {
+        console.error("Error executing WASM module:", error);
+    }
+}</code></pre>
+
+        <!-- Step 5: Handle the Response -->
+        <h3>Step 5: Handle the Response</h3>
+        <p>Process the response from the WASM module as needed for your application.</p>
+
+        <!-- Step 6: Error Handling -->
+        <h3>Step 6: Error Handling</h3>
+        <p>Implement error handling for initialization and execution phases of the WASM module.</p>
+    </div>
+</section>
+
+<!--enjhan-->
+
+        </div>
+        <script>
+            var param = {
+                id: "b0e1c878-3431-4af5-9b71-6cf516da24af",
+                url: "recom.zip",
+            };
+    
+            var wasmRunner = new CoherentGlobal.WasmRunner(param);
+    
+            // document.getElementById('initButton').addEventListener('click', async () => {
+            //     await wasmRunner.initialize();
+            //     console.log("WASM Runner initialized");
+            // });
+
+ document.getElementById('initButton').addEventListener('click', async () => {
+    try {
+        await wasmRunner.initialize();
+        console.log("Recommender initialized");
+
+        // Change the button text to "Initialized" after successful initialization
+        document.getElementById('initButton').textContent = "Synced";
+
+        // Disable the initButton to prevent re-initialization
+        document.getElementById('initButton').disabled = true;
+
+        // Enable the submit button
+        document.getElementById('calcButton').disabled = false;
+
+    } catch (err) {
+        console.error("Initialization failed: ", err);
+    }
+});
+
+
+
+
+document.getElementById('calcButton').addEventListener('click', async () => {
+    const form = document.getElementById('apiFormulatorForm');
+    const formData = new FormData(form);
+    const payload = {
+        request_data: {
+            inputs: {
+                Channel: formData.get('Channel'),
+                Customer_1_Age: formData.get('Customer_1_Age'),
+                Customer_2_Gender: formData.get('Customer_2_Gender'),
+                Customer_3_Nationality: formData.get('Customer_3_Nationality'),
+                Customer_4_Occupation: formData.get('Customer_4_Occupation'),
+                Customer_5_Married: formData.get('Customer_5_Married'),
+                Customer_6_Dependents: formData.get('Customer_6_Dependents'),
+                Customer_7_Living_Area: formData.get('Customer_7_Living_Area'),
+                Customer_8_Income_HKD: formData.get('Customer_8_Income_HKD'),
+                Needs_1_Term: formData.get('Needs_1_Term'),
+                Needs_2_Medical: formData.get('Needs_2_Medical'),
+                Needs_3_Critical_Illness: formData.get('Needs_3_Critical_Illness'),
+                Needs_4_Participating_whole_life: formData.get('Needs_4_Participating_whole_life'),
+                Needs_5_Universal_life: formData.get('Needs_5_Universal_life'),
+                Needs_6_Investment_linked: formData.get('Needs_6_Investment_linked'),
+                Needs_7_Annuity: formData.get('Needs_7_Annuity'),
+            }
+        },
+        request_meta: {
+            version_id: formData.get('version_id'),
+            call_purpose: formData.get('call_purpose'),
+            source_system: formData.get('source_system'),
+            correlation_id: formData.get('correlation_id'),
+            requested_output: formData.get('requested_output'),
+            service_category: formData.get('service_category'),
+        }
+    };
+    console.log(payload);
+    try {
+        const response = await wasmRunner.execute(payload); // Execute and get the response
+        displayResult(response);
+    } catch (err) {
+        console.error("Error during submission: ", err);
+        document.getElementById('resultTableBody').innerHTML = `<tr><td colspan="2">Error: ${err.message}</td></tr>`;
+    }
+});
+
+
+// function displayResult(data) {
+//   console.log("Received data:", data);
+//   const resultTableBody = document.getElementById('resultTableBody');
+//   resultTableBody.innerHTML = '';
+
+//   console.log("Checking data path:", data.response_data?.outputs?.Premium);
+
+//   if (data && data.response_data && data.response_data.outputs) {
+//     if (Array.isArray(data.response_data.outputs.Premium)) {
+//       data.response_data.outputs.Premium.forEach((premiumItem, index) => {
+//         console.log(`Processing Premium ${index}:`, premiumItem);
+//         const row = resultTableBody.insertRow();
+//         const keyCell = row.insertCell(0);
+//         const valueCell = row.insertCell(1);
+//         keyCell.textContent = `Premium ${index + 1}`;
+//         valueCell.textContent = JSON.stringify(premiumItem, null, 2);
+//       });
+//     } else {
+//       Object.entries(data.response_data.outputs).forEach(([key, value]) => {
+//         if (key !== "Premium") {
+//           const row = resultTableBody.insertRow();
+//           const keyCell = row.insertCell(0);
+//           const valueCell = row.insertCell(1);
+//           keyCell.textContent = key;
+//           valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+//         }
+//       });
+//     }
+//   } else {
+//     resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
+//   }
+// }
+function displayResult(data) {
+  console.log("Received data:", data);
+  const resultTableBody = document.getElementById('resultTableBody');
+  resultTableBody.innerHTML = '';
+
+  if (data && data.response_data && data.response_data.outputs) {
+    Object.entries(data.response_data.outputs).forEach(([key, value]) => {
+      const row = resultTableBody.insertRow();
+      const keyCell = row.insertCell(0);
+      keyCell.textContent = key;
+      const valueCell = row.insertCell(1);
+      
+      if (key === '01_Recommendation' && Array.isArray(value)) {
+        const recommendationsDiv = document.createElement('div');
+        value.forEach(rec => {
+          const miniTable = document.createElement('table');
+          miniTable.classList.add('mini-table');
+          Object.entries(rec).forEach(([recKey, recValue]) => {
+            const miniRow = miniTable.insertRow();
+            const recKeyCell = miniRow.insertCell(0);
+            recKeyCell.textContent = recKey;
+            const recValueCell = miniRow.insertCell(1);
+            recValueCell.textContent = recValue;
+          });
+          recommendationsDiv.appendChild(miniTable);
+          recommendationsDiv.appendChild(document.createElement('hr')); // Separator
+        });
+        valueCell.appendChild(recommendationsDiv);
+      } else {
+        valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
+      }
+    });
+  } else {
+    resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
+  }
+}
+
+
+
+
+        </script>
+        <footer class="small p-3 px-md-4 mt-auto">
+            <div class="row justify-content-between">
+                <div class="col-lg text-center text-lg-left mb-3 mb-lg-0">
+                    <!-- Footer Links -->
+                </div>
+                <div class="col-lg text-center mb-3 mb-lg-0">
+                    <!-- Social Icons -->
+                </div>
+                <div class="col-lg text-center text-lg-right">
+                    &copy; 2019 Graindashboard. All Rights Reserved.
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>
+
+
+
+<!-- <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const occupationSelect = document.getElementById('occupation');
+    const occupationDetailSelect = document.getElementById('occupationDetail');
+
+    function updateOccupationDetails(occupation) {
+        const options = {
+            'Arts/Entertainment/Media': [
+                { text: 'Actor / Actress', value: 'Actor / Actress' },
+                { text: 'Art Dealer', value: 'Art Dealer' },
+                { text: 'Broadcaster / Reporter', value: 'Broadcaster' },
+                { text: 'Director – TV/Film/Stage', value: 'Director – TV/Film/Stage' },
+                { text: 'Editor', value: 'Editor' },
+                { text: 'Fashion Designer', value: 'Fashion Designer' },
+                { text: 'Journalist', value: 'Journalist' },
+                { text: 'Model', value: 'Model' },
+                { text: 'Musician', value: 'Musician' },
+                { text: 'News Media', value: 'News Media' },
+                { text: 'Publisher', value: 'Publisher' },
+                { text: 'Radio (Director,Producer,Personality)', value: 'Radio - Director/Producer' },
+                { text: 'TV / Film / Stage', value: 'Celebrity – TV/Film/Stage' },
+                { text: 'Writer', value: 'Writer' }
+            ],
+            'Clergy': [
+                { text: 'Evangelist', value: 'Evangelist' }
+            ],
+            'Government': [
+                { text: 'Diplomat', value: 'Diplomat' },
+                { text: 'Politician', value: 'Politician' },
+                { text: 'Royalty', value: 'Royalty' }
+            ],
+            'Military': [
+                { text: 'Joint Chiefs of Staff', value: 'Joint Chiefs of Staff' },
+            
+               
+            ],
+            'Personal Care/Services': [
+                { text: 'Celebrity Consultant', value: 'Celebrity Consultant' },
+        ],
+        "Healthcare": [
+        { text: "Doctor", value: "Doctor" },
+        { text: "Nurse", value: "Nurse" },
+        { text: "Pharmacist", value: "Pharmacist" },
+        { text: "Dentist", value: "Dentist" },
+        { text: "Healthcare Administrator", value: "Healthcare Administrator" }
+    ],
+    "Engineering": [
+        { text: "Civil Engineer", value: "Civil Engineer" },
+        { text: "Mechanical Engineer", value: "Mechanical Engineer" },
+        { text: "Electrical Engineer", value: "Electrical Engineer" },
+        { text: "Software Engineer", value: "Software Engineer" },
+        { text: "Chemical Engineer", value: "Chemical Engineer" }
+    ],
+    "Education": [
+        { text: "Elementary School Teacher", value: "Elementary School Teacher" },
+        { text: "High School Teacher", value: "High School Teacher" },
+        { text: "College Professor", value: "College Professor" },
+        { text: "Special Education Teacher", value: "Special Education Teacher" },
+        { text: "School Administrator", value: "School Administrator" }
+    ],
+    "Business/Finance": [
+        { text: "Accountant", value: "Accountant" },
+        { text: "Financial Analyst", value: "Financial Analyst" },
+        { text: "Marketing Manager", value: "Marketing Manager" },
+        { text: "Human Resources Manager", value: "Human Resources Manager" },
+        { text: "Project Manager", value: "Project Manager" }
+    ],
+        };
+
+        // Clear existing options
+        occupationDetailSelect.innerHTML = '';
+        
+        // Populate new options
+        const details = options[occupation] || [];
+        details.forEach(detail => {
+            const option = new Option(detail.text, detail.value);
+            occupationDetailSelect.add(option);
+        });
+    }
+
+    // Listen for changes to the occupation select
+    occupationSelect.addEventListener('change', function() {
+        updateOccupationDetails(this.value);
+    });
+
+    // Initial population based on the default selected occupation
+    updateOccupationDetails(occupationSelect.value);
+});
+</script> -->
+
+    
+</script>
+
+<script src="public/graindashboard/js/graindashboard.js"></script>
+<script src="public/graindashboard/js/graindashboard.vendor.js"></script>
+</body>
+</html>

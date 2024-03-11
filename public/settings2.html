@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Title -->
+    <title>Settings | Graindashboard UI Kit</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="public/img/favicon.ico">
+
+    <!-- Template -->
+    <link rel="stylesheet" href="public/graindashboard/css/graindashboard.css">
+</head>
+
+<body class="has-sidebar has-fixed-sidebar-and-header">
+<!-- Header -->
+<header class="header bg-body">
+    <!-- Existing header content -->
+</header>
+<!-- End Header -->
+
+<main class="main">
+    <!-- Sidebar Nav -->
+    <aside id="sidebar" class="js-custom-scroll side-nav">
+        <!-- Existing sidebar content -->
+    </aside>
+    <!-- End Sidebar Nav -->
+
+    <div class="content">
+        <div class="py-4 px-3 px-md-4">
+            <div class="card mb-3 mb-md-4">
+                <!-- Existing settings form content -->
+            </div>
+
+            <!-- New API Response Formulator Form -->
+            <div class="card mb-3 mb-md-4">
+                <div class="card-body">
+                    <div class="mb-3 mb-md-4 d-flex justify-content-between">
+                        <div class="h3 mb-0">API Response Formulator</div>
+                    </div>
+                    <!-- API Formulator Form -->
+                    <form id="apiFormulatorForm">
+                        <div class="form-row">
+                            <div class="form-group col-12 col-md-6">
+                                <label for="insuredValue">Insured Value</label>
+                                <input type="range" class="custom-range" min="50000" max="500000" step="5000" value="100000" id="insuredValue" name="insuredValue">
+                                <small id="insuredValueHelp" class="form-text text-muted">Select the insured value.</small>
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                                <label for="occupation">Occupation</label>
+                                <select class="form-control" id="occupation" name="occupation">
+                                    <option>Clergy</option>
+                                    <option>Developer</option>
+                                    <option>Teacher</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12 col-md-6">
+                                <label for="occupationDetail">Occupation Detail</label>
+                                <input type="text" class="form-control" id="occupationDetail" name="occupationDetail" placeholder="Detail about occupation">
+                            </div>
+                            <div class="form-group col-12 col-md-6">
+                                <label for="state">State</label>
+                                <select class="form-control" id="state" name="state">
+                                    <option>Massachusetts</option>
+                                    <option>New York</option>
+                                    <option>California</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="territory">Territory</label>
+                                <input type="range" class="custom-range" min="100" max="300" step="10" value="200" id="territory" name="territory">
+                                <small id="territoryHelp" class="form-text text-muted">Select the territory value.</small>
+                            </div>
+                        </div>
+                        <!-- Hidden fields for request_meta -->
+                        <input type="hidden" name="version_id" value="37bbea1b-1a4a-4d12-b9fd-03e15ee806ca">
+                        <input type="hidden" name="call_purpose" value="Spark - API Tester">
+                        <input type="hidden" name="source_system" value="SPARK">
+                        <input type="hidden" name="correlation_id">
+                        <input type="hidden" name="requested_output">
+                        <input type="hidden" name="service_category" value="">
+                        
+                        <button type="submit" class="btn btn-primary float-right">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="small p-3 px-md-4 mt-auto">
+            <!-- Existing footer content -->
+        </footer>
+        <!-- End Footer -->
+    </div>
+</main>
+
+<script src="public/graindashboard/js/graindashboard.js"></script>
+<script src="public/graindashboard/js/graindashboard.vendor.js"></script>
+
+<!-- JavaScript for handling the form submission -->
+<script>
+document.getElementById('apiFormulatorForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Collect input values
+    var formData = {
+        request_data: {
+            inputs: {
+                InsuredValue: parseInt(document.getElementById('insuredValue').value, 10),
+                Occupation: document.getElementById('occupation').value,
+                OccupationDetail: document.getElementById('occupationDetail').value,
+                State: document.getElementById('state').value,
+                Territory: parseInt(document.getElementById('territory').value, 10),
+            }
+        },
+        request_meta: {
+            version_id: document.querySelector('[name="version_id"]').value,
+            call_purpose: document.querySelector('[name="call_purpose"]').value,
+            source_system: document.querySelector('[name="source_system"]').value,
+            correlation_id: document.querySelector('[name="correlation_id"]').value,
+            requested_output: document.querySelector('[name="requested_output"]').value,
+            service_category: document.querySelector('[name="service_category"]').value,
+        }
+    };
+
+    console.log(JSON.stringify(formData));
+    // Here, implement the code to send formData to your backend API using fetch or another AJAX method.
+});
+</script>
+
+</body>
+</html>
