@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Settings | Graindashboard UI Kit</title>
+    <title>Dashboard | Chubb Capsule</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -51,7 +51,7 @@
     <nav class="navbar flex-nowrap p-0">
         <div class="navbar-brand-wrapper d-flex align-items-center col-auto">
             <a class="navbar-brand navbar-brand-mobile" href="/">
-                <img class="img-fluid w-100" src="public/img/logo-mini.png" alt="Graindashboard">
+                <img class="img-fluid w-100" src="public/img/chubblogo-mini.png" alt="Graindashboard">
             </a>
             <a class="navbar-brand navbar-brand-desktop" href="/">
                 <img class="side-nav-show-on-closed" src="public/img/chubblogo-mini.png" alt="Graindashboard" style="width: auto; height: 33px;">
@@ -78,7 +78,7 @@
                 <div class="dropdown mx-3">
                     <a id="profileMenuInvoker" class="header-complex-invoker d-flex align-items-center" href="#" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#profileMenu" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
                         <span class="mr-md-2 avatar-placeholder">J</span>
-                        <span class="d-none d-md-block">John Doe</span>
+                        <span class="d-none d-md-block">Johan O</span>
                         <i class="gd-angle-down d-none d-md-block ml-2"></i>
                     </a>
                     <ul id="profileMenu" class="unfold unfold-user unfold-light unfold-top unfold-centered position-absolute pt-2 pb-1 mt-4 unfold-css-animation unfold-hidden fadeOut" aria-labelledby="profileMenuInvoker">
@@ -231,14 +231,14 @@
                     
                     <div class="card mb-3 mb-md-4">
                         <div class="card-body">
-                            <h3 class="mb-4">Cyber Protect - V2.3 </h3>
+                            <h3 class="mb-4">Blink Paycheck - V2.3 </h3>
                             <form id="apiFormulatorForm">
                                 <!-- AccidentSickness -->
                                 <div class="form-group">
                                     <label for="AccidentSickness">Accident and Sickness</label>
                                     <select class="form-control" id="AccidentSickness" name="AccidentSickness">
-                                        <option value="Accident and Sickness">Accident and Sickness</option>
-                                        <!-- Add more options as needed -->
+                                        
+                                        <option value="Accident Only">Accident Only</option><option value=Accident and Sickness>Accident and Sickness</option><option value=Sickness Only>Sickness Only</option>
                                     </select>
                                 </div>
                     
@@ -246,11 +246,44 @@
                                 <div class="form-group">
                                     <label for="Age">Age</label>
                                     <select class="form-control" id="Age" name="Age">
-                                        <option value="40-49">40-49</option>
-                                        <!-- Add more options as needed -->
+                                        
+                                        <option value="18-39">18-39</option><option value=40-49>40-49</option><option value=50-59>50-59</option><option value=60-64>60-64</option>
                                     </select>
                                 </div>
-                    
+                      <!-- Occupation -->
+                      <div class="form-group">
+                        <label for="Occupation">Occupation</label>
+                        <select class="form-control" id="Occupation" name="Occupation">
+                            <option value="Account Manager">Account Manager</option><option value="Accountant">Accountant</option><option value="Accounting Clerk">Accounting Clerk</option><option value="Accounting Manager">Accounting Manager</option><option value="Acid Cleaner or Laborer, Manufacturing - Light">Acid Cleaner or Laborer, Manufacturing - Light</option><option value="Acid Cleaner or Laborer, Materials Processing">Acid Cleaner or Laborer, Materials Processing</option><option value="Acid Cleaner or Laborer, Natural Resources">Acid Cleaner or Laborer, Natural Resources</option><option value="Actor">Actor</option><option value="Actuary">Actuary</option><option value="Adjustor, All">Adjustor, All</option><option value="Administrative Assistant">Administrative Assistant</option><option value="Administrative Assistant, Financial">Administrative Assistant, Financial</option><option value="Administrative Assistant, Schools">Administrative Assistant, Schools</option><option value="Administrative Assistant, White Collar Industries">Administrative Assistant, White Collar Industries</option><option value="Administrative Law Judges, Adjudicators, and Hearing Officer">Administrative Law Judges, Adjudicators, and Hearing Officer</option><option value="Administrative Services Manager, Financial">Administrative Services Manager, Financial</option><option value="Administrative Services Manager, Hospital/Nursing Homes">Administrative Services Manager, Hospital/Nursing Homes</option><option value="Administrative Services Manager, Schools">Administrative Services Manager, Schools</option><option value="Administrative Services Manager, White Collar Industries">Administrative Services Manager, White Collar Industries</option><option value="Adult Foster Care Worker, Civic Offices">Adult Foster Care Worker, Civic Offices</option><option value="Adult Foster Care Worker, Personal Services">Adult Foster Care Worker, Personal Services</option><option value="Adult Foster Care Worker, Schools">Adult Foster Care Worker, Schools</option><option value="Adult Literacy, Remedial Education, and GED Teachers and Instructors">Adult Literacy, Remedial Education, and GED Teachers and Instructors</option><option value="Advertising and Promotions, Information/Communications">Advertising and Promotions, Information/Communications</option><option value="Advertising and Promotions, Retail & Rental Stores">Advertising and Promotions, Retail & Rental Stores</option><option value="Advertising Sales Agents, Information/Communications">Advertising Sales Agents, Information/Communications</option><option value="Advertising Sales Agents, Retail & Rental Stores">Advertising Sales Agents, Retail & Rental Stores</option><option value="Aerospace Engineering and Operations Technicians">Aerospace Engineering and Operations Technicians</option><option value="Agents and Business Managers of Artists, Performers, and Athletes">Agents and Business Managers of Artists, Performers, and Athletes</option><option value="Agricultural Equipment Operators">Agricultural Equipment Operators</option><option value="Agricultural Inspectors">Agricultural Inspectors</option><option value="Agricultural Workers">Agricultural Workers</option><option value="Air Conditioning Repair">Air Conditioning Repair</option><option value="Air Traffic Controller">Air Traffic Controller</option><option value="Air Traffic Instructor">Air Traffic Instructor</option><option value="Aircraft Cargo Handling Supervisors">Aircraft Cargo Handling Supervisors</option><option value="Aircraft Mechanics and Service Technicians">Aircraft Mechanics and Service Technicians</option><option value="Aircraft Pilot or Crew/Instructor">Aircraft Pilot or Crew/Instructor</option><option value="Aircraft Structure, Surfaces, Rigging, and Systems Assemblers">Aircraft Structure, Surfaces, Rigging, and Systems Assemblers</option><option value="Airfield Operations Specialists">Airfield Operations Specialists</option><option value="Airline Pilots, Co-pilots, and Flight Engineers">Airline Pilots, Co-pilots, and Flight Engineers</option><option value="Alderman">Alderman</option><option value="Ambulance Drivers and Attendants, Except Emergency Medical Technicians">Ambulance Drivers and Attendants, Except Emergency Medical Technicians</option><option value="Amusement & Recr Attendants">Amusement & Recr Attendants</option><option value="Analyst">Analyst</option><option value="Anesthesiologists, Hospital/Nursing Homes">Anesthesiologists, Hospital/Nursing Homes</option><option value="Anesthesiologists, Medical Offices">Anesthesiologists, Medical Offices</option><option value="Animal Caretaker">Animal Caretaker</option><option value="Animal Control Worker">Animal Control Worker</option><option value="Animal Control Worker">Animal Control Worker</option><option value="Animal Trainer">Animal Trainer</option>->
+                        </select>
+                    </div>
+        
+                    <!-- Plan -->
+                    <div class="form-group">
+                        <label for="Plan">Plan</label>
+                        <select class="form-control" id="Plan" name="Plan">
+                            <option value="Low">Low</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                     <!-- Smoker -->
+                     <div class="form-group">
+                        <label for="Smoker">Smoker</label>
+                        <select class="form-control" id="Smoker" name="Smoker">
+                            <option value="Non-Smoker">Non-Smoker</option>
+                            <option value="Smoker">Smoker</option>
+                        </select>
+                    </div>
+        
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="State">State</label>
+                        <select class="form-control" id="State" name="State">
+                            <!-- <option value="Ohio">Ohio</option> -->
+                            <!-- Add more states as needed -->
+                            <option value="Alabama">Alabama</option><option value=Alaska>Alaska</option><option value=Arizona>Arizona</option><option value=Arkansas>Arkansas</option><option value=California>California</option><option value=Colorado>Colorado</option><option value=Connecticut>Connecticut</option><option value=Delaware>Delaware</option><option value=District of Columbia>District of Columbia</option><option value=Florida>Florida</option><option value=Georgia>Georgia</option><option value=Hawaii>Hawaii</option><option value=Idaho>Idaho</option><option value=Illinois>Illinois</option><option value=Indiana>Indiana</option><option value=Iowa>Iowa</option><option value=Kansas>Kansas</option><option value=Kentucky>Kentucky</option><option value=Louisiana>Louisiana</option><option value=Maine>Maine</option><option value=Maryland>Maryland</option><option value=Massachusetts>Massachusetts</option><option value=Michigan>Michigan</option><option value=Minnesota>Minnesota</option><option value=Mississippi>Mississippi</option><option value=Missouri>Missouri</option><option value=Montana>Montana</option><option value=Nebraska>Nebraska</option><option value=Nevada>Nevada</option><option value=New Hampshire>New Hampshire</option><option value=New Jersey>New Jersey</option><option value=New Mexico>New Mexico</option><option value=New York>New York</option><option value=North Carolina>North Carolina</option><option value=North Dakota>North Dakota</option><option value=Ohio>Ohio</option><option value=Oklahoma>Oklahoma</option><option value=Oregon>Oregon</option><option value=Pennsylvania>Pennsylvania</option><option value=Rhode Island>Rhode Island</option><option value=South Carolina>South Carolina</option><option value=South Dakota>South Dakota</option><option value=Tennessee>Tennessee</option><option value=Texas>Texas</option><option value=Utah>Utah</option><option value=Vermont>Vermont</option><option value=Virginia>Virginia</option><option value=Washington>Washington</option><option value=West Virginia>West Virginia</option><option value=Wisconsin>Wisconsin</option><option value=Wyoming>Wyoming</option>
+                        </select>
+                    </div>
                                 <!-- AnnualModeDiscount -->
                                 <div class="form-group">
                                     <label for="AnnualModeDiscount">Annual Mode Discount</label>
@@ -284,41 +317,9 @@
                                     </select>
                                 </div>
                     
-                                <!-- Occupation -->
-                                <div class="form-group">
-                                    <label for="Occupation">Occupation</label>
-                                    <select class="form-control" id="Occupation" name="Occupation">
-                                        <option value="Accountant">Accountant</option>
-                                        <!-- Populate dynamically or add more options as needed -->
-                                    </select>
-                                </div>
+                              
                     
-                                <!-- Plan -->
-                                <div class="form-group">
-                                    <label for="Plan">Plan</label>
-                                    <select class="form-control" id="Plan" name="Plan">
-                                        <option value="Low">Low</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
-                                </div>
-                    
-                                <!-- Smoker -->
-                                <div class="form-group">
-                                    <label for="Smoker">Smoker</label>
-                                    <select class="form-control" id="Smoker" name="Smoker">
-                                        <option value="Non-Smoker">Non-Smoker</option>
-                                        <option value="Smoker">Smoker</option>
-                                    </select>
-                                </div>
-                    
-                                <!-- State -->
-                                <div class="form-group">
-                                    <label for="State">State</label>
-                                    <select class="form-control" id="State" name="State">
-                                        <option value="Ohio">Ohio</option>
-                                        <!-- Add more states as needed -->
-                                    </select>
-                                </div>
+                               
                     
                                 <!-- WellnessBonus -->
                                 <div class="form-group">
@@ -459,37 +460,7 @@
 });
 
 
-// Function to recursively display each value in a visually structured manner
-// function displayValue(value, parentElement) {
-//     // Check if 'value' is the expected response object and contains 'response_data'
-//     if (typeof value === 'object' && value !== null && value.response_data) {
-//         // Specifically target the 'Outputs' within 'response_data', if it exists
-//         const outputs = value.response_data.Outputs;
-//         if (outputs) {
-//             // Now iterate over 'Outputs' to display them
-//             Object.entries(outputs).forEach(([key, val]) => {
-//                 const row = parentElement.insertRow();
-//                 const keyCell = row.insertCell(0);
-//                 keyCell.textContent = key;
-//                 keyCell.style.fontWeight = "bold";
-//                 const valueCell = row.insertCell(1);
-//                 valueCell.textContent = typeof val === 'object' ? JSON.stringify(val, null, 2) : val;
-//             });
-//         } else {
-//             // If 'Outputs' is not present, display a message or handle accordingly
-//             const row = parentElement.insertRow();
-//             const cell = row.insertCell(0);
-//             cell.textContent = "No Outputs Available";
-//             cell.colSpan = 2;
-//         }
-//     } else {
-//         // Handle unexpected response format
-//         const row = parentElement.insertRow();
-//         const cell = row.insertCell(0);
-//         cell.textContent = "Invalid Response Format";
-//         cell.colSpan = 2;
-//     }
-// }
+
 
 document.getElementById('calcButton').addEventListener('click', async () => {
     const form = document.getElementById('apiFormulatorForm');
@@ -519,10 +490,13 @@ document.getElementById('calcButton').addEventListener('click', async () => {
             service_category: formData.get('service_category'),
         }
     };
-
+ // Start timing before the call
+ const startTime = performance.now();
     try {
         const response = await wasmRunner.execute(payload); // Execute and get the response
         displayResult(response);
+        const endTime = performance.now();
+        const timeTaken = (endTime - startTime).toFixed(2); 
     } catch (err) {
         console.error("Error during submission: ", err);
         document.getElementById('resultTableBody').innerHTML = `<tr><td colspan="2">Error: ${err.message}</td></tr>`;
@@ -531,38 +505,9 @@ document.getElementById('calcButton').addEventListener('click', async () => {
 
 
 
-// function displayResult(data) {
-//   console.log("Received data:", data);
-//   const resultTableBody = document.getElementById('resultTableBody');
-//   resultTableBody.innerHTML = '';
 
-//   console.log("Checking data path:", data.response_data?.outputs?.Premium);
+let startTime = Date.now();
 
-//   if (data && data.response_data && data.response_data.outputs) {
-//     if (Array.isArray(data.response_data.outputs.Premium)) {
-//       data.response_data.outputs.Premium.forEach((premiumItem, index) => {
-//         console.log(`Processing Premium ${index}:`, premiumItem);
-//         const row = resultTableBody.insertRow();
-//         const keyCell = row.insertCell(0);
-//         const valueCell = row.insertCell(1);
-//         keyCell.textContent = `Premium ${index + 1}`;
-//         valueCell.textContent = JSON.stringify(premiumItem, null, 2);
-//       });
-//     } else {
-//       Object.entries(data.response_data.outputs).forEach(([key, value]) => {
-//         if (key !== "Premium") {
-//           const row = resultTableBody.insertRow();
-//           const keyCell = row.insertCell(0);
-//           const valueCell = row.insertCell(1);
-//           keyCell.textContent = key;
-//           valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
-//         }
-//       });
-//     }
-//   } else {
-//     resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
-//   }
-// }
 function displayResult(data) {
   console.log("Received data:", data);
   const resultTableBody = document.getElementById('resultTableBody');
@@ -595,6 +540,13 @@ function displayResult(data) {
         valueCell.textContent = typeof value === 'object' ? JSON.stringify(value, null, 2) : value;
       }
     });
+      // Calculate and display execution time
+      let endTime = Date.now();
+    let executionTime = (endTime - startTime) / 1000; // Convert milliseconds to seconds
+    let executionTimeRow = resultTableBody.insertRow();
+    executionTimeRow.insertCell(0).textContent = 'Execution Time';
+    executionTimeRow.insertCell(1).textContent = `${executionTime} milliseconds`;
+  
   } else {
     resultTableBody.innerHTML = `<tr><td colspan="2">No valid response received</td></tr>`;
   }
@@ -619,97 +571,6 @@ function displayResult(data) {
     </div>
 </main>
 
-
-
-<!-- <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const occupationSelect = document.getElementById('occupation');
-    const occupationDetailSelect = document.getElementById('occupationDetail');
-
-    function updateOccupationDetails(occupation) {
-        const options = {
-            'Arts/Entertainment/Media': [
-                { text: 'Actor / Actress', value: 'Actor / Actress' },
-                { text: 'Art Dealer', value: 'Art Dealer' },
-                { text: 'Broadcaster / Reporter', value: 'Broadcaster' },
-                { text: 'Director – TV/Film/Stage', value: 'Director – TV/Film/Stage' },
-                { text: 'Editor', value: 'Editor' },
-                { text: 'Fashion Designer', value: 'Fashion Designer' },
-                { text: 'Journalist', value: 'Journalist' },
-                { text: 'Model', value: 'Model' },
-                { text: 'Musician', value: 'Musician' },
-                { text: 'News Media', value: 'News Media' },
-                { text: 'Publisher', value: 'Publisher' },
-                { text: 'Radio (Director,Producer,Personality)', value: 'Radio - Director/Producer' },
-                { text: 'TV / Film / Stage', value: 'Celebrity – TV/Film/Stage' },
-                { text: 'Writer', value: 'Writer' }
-            ],
-            'Clergy': [
-                { text: 'Evangelist', value: 'Evangelist' }
-            ],
-            'Government': [
-                { text: 'Diplomat', value: 'Diplomat' },
-                { text: 'Politician', value: 'Politician' },
-                { text: 'Royalty', value: 'Royalty' }
-            ],
-            'Military': [
-                { text: 'Joint Chiefs of Staff', value: 'Joint Chiefs of Staff' },
-            
-               
-            ],
-            'Personal Care/Services': [
-                { text: 'Celebrity Consultant', value: 'Celebrity Consultant' },
-        ],
-        "Healthcare": [
-        { text: "Doctor", value: "Doctor" },
-        { text: "Nurse", value: "Nurse" },
-        { text: "Pharmacist", value: "Pharmacist" },
-        { text: "Dentist", value: "Dentist" },
-        { text: "Healthcare Administrator", value: "Healthcare Administrator" }
-    ],
-    "Engineering": [
-        { text: "Civil Engineer", value: "Civil Engineer" },
-        { text: "Mechanical Engineer", value: "Mechanical Engineer" },
-        { text: "Electrical Engineer", value: "Electrical Engineer" },
-        { text: "Software Engineer", value: "Software Engineer" },
-        { text: "Chemical Engineer", value: "Chemical Engineer" }
-    ],
-    "Education": [
-        { text: "Elementary School Teacher", value: "Elementary School Teacher" },
-        { text: "High School Teacher", value: "High School Teacher" },
-        { text: "College Professor", value: "College Professor" },
-        { text: "Special Education Teacher", value: "Special Education Teacher" },
-        { text: "School Administrator", value: "School Administrator" }
-    ],
-    "Business/Finance": [
-        { text: "Accountant", value: "Accountant" },
-        { text: "Financial Analyst", value: "Financial Analyst" },
-        { text: "Marketing Manager", value: "Marketing Manager" },
-        { text: "Human Resources Manager", value: "Human Resources Manager" },
-        { text: "Project Manager", value: "Project Manager" }
-    ],
-        };
-
-        // Clear existing options
-        occupationDetailSelect.innerHTML = '';
-        
-        // Populate new options
-        const details = options[occupation] || [];
-        details.forEach(detail => {
-            const option = new Option(detail.text, detail.value);
-            occupationDetailSelect.add(option);
-        });
-    }
-
-    // Listen for changes to the occupation select
-    occupationSelect.addEventListener('change', function() {
-        updateOccupationDetails(this.value);
-    });
-
-    // Initial population based on the default selected occupation
-    updateOccupationDetails(occupationSelect.value);
-});
-</script> -->
 
     
 </script>
